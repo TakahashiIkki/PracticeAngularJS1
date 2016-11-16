@@ -8,6 +8,17 @@
  */
 var myApp = angular.module('myApp', []);
 
-myApp.controller('mainController', function() {
+myApp.controller('mainController', function($scope) {
+
+    // $scope 変数に 自分で定義した変数を追加出来る。
+    $scope.name = '山田太郎';
+    $scope.hobby = '釣り';
+
+    // 関数も追加出来る。
+    $scope.getName = function () {
+        return '山田';
+    };
+
+    console.log($scope);
 
 });
