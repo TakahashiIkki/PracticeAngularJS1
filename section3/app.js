@@ -8,13 +8,13 @@
  */
 var myApp = angular.module('myApp', []);
 
-myApp.controller('mainController', function($scope) {
+// $log: ログサービスを使う。
+myApp.controller('mainController', function($scope, $log, $filter) {
+
+    $scope.name = 'ken';
+    $scope.upperName = $filter('uppercase')($scope.name);
+
+    $log.info($scope.name);
+    $log.info($scope.upperName);
 
 });
-
-var searchPeople = function (firstName, lastName, height, age, hobby) {
-    return '山田  太郎';
-};
-
-// 引数の名前がStringの配列になって、出力される。
-console.log(angular.injector().annotate(searchPeople));
