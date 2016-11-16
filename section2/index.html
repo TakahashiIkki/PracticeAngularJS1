@@ -1,33 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--  -->
+<html lang="ja" ng-app="myApp">
     <head>
         <meta http-equiv="X-UA-COMPATIBLE" content="IE=Edge">
         <meta charset="UTF-8">
         <title>AnglarJS</title>
 
-        <!-- bootstrapの読み込み -->
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
 
-        <script src="jquery-2.2.1.min.js"></script>
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-
         <style>
             html,
-            body,
-            input,
-            select,
-            textarea {
-                font-size: 1.05em !important;
+            body {
+                font-size: 1.1em;
             }
         </style>
+
+        <!-- angularをCDNから取得 -->
+        <script src="../bootstrap/js/1.5.8.angular.min.js"></script>
+        <script src="app.js"></script>
+
     </head>
     <body>
         <header>
             <nav class="navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="/" class="navbar-brand">jQuery</a>
+                        <a href="/" class="navbar-brand">AngularJs</a>
                     </div>
 
                     <ul class="nav navbar-nav navbar-right">
@@ -39,13 +38,9 @@
         </header>
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1 reply="">こんにちは</h1>
-                </div>
+            <div ng-controller="mainController">
+                <h1>こんにちは</h1>
             </div>
         </div>
-
-        <script src="app.js"></script>
     </body>
 </html>
