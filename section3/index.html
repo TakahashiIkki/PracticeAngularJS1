@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="X-UA-COMPATIBLE" content="IE=Edge">
         <meta charset="UTF-8">
-        <title>インターポレーション | AnglarJS</title>
+        <title>ディレクティブ | AnglarJS</title>
 
         <!-- bootstrapを読込 -->
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -39,8 +39,15 @@
 
         <div class="container">
             <div ng-controller="mainController">
-                <h1>{{name + 'さん'}}、 こんにちは</h1>
-                <!-- {{}} と $scope は対応している。 -->
+                <div>
+                    <label>Twitterのハンドルネームを入力してください。</label>
+                    <input type="text" ng-model="handle">
+                    <!-- input と $scope.handle が双方向にバインドされる。 -->
+                </div>
+
+                <hr />
+
+                <h1>twitter.com/{{lowercaseHandle()}}</h1>
             </div>
         </div>
     </body>
