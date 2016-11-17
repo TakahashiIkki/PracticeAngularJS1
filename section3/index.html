@@ -4,7 +4,7 @@
     <head>
         <meta http-equiv="X-UA-COMPATIBLE" content="IE=Edge">
         <meta charset="UTF-8">
-        <title>$scopeについて | AnglarJS</title>
+        <title>インターポレーション | AnglarJS</title>
 
         <!-- bootstrapを読込 -->
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
@@ -18,8 +18,6 @@
 
         <!-- angularをCDNから取得 -->
         <script src="../bootstrap/js/1.5.8.angular.min.js"></script>
-        <script src="https://code.angularjs.org/1.5.8/angular-messages.min.js"></script>
-        <script src="https://code.angularjs.org/1.5.8/angular-resource.min.js"></script>
         <script src="app.js"></script>
 
     </head>
@@ -41,20 +39,8 @@
 
         <div class="container">
             <div ng-controller="mainController">
-                <form name="myForm">
-                    <label>
-                        メールアドレス:
-                        <input type="email" ng-model="field" name="myField" required minlength="5" />
-                    </label>
-
-                    <div ng-messages="myForm.myField.$error" role="alert">
-                        <div class="alert alert-danger" ng-message="required">未入力です。</div>
-                        <div class="alert alert-danger" ng-message="minlength, maxLength">
-                            メールアドレスは5〜100文字でなければなりません。
-                        </div>
-                    </div>
-                </form>
-                <h1>こんにちは</h1>
+                <h1>{{name + 'さん'}}、 こんにちは</h1>
+                <!-- {{}} と $scope は対応している。 -->
             </div>
         </div>
     </body>
