@@ -9,7 +9,7 @@
  */
 var myApp = angular.module('myApp', []);
 
-myApp.controller('mainController', ['$scope', '$filter', function($scope, $filter) {
+myApp.controller('mainController', ['$scope', '$filter', '$timeout', function($scope, $filter, $timeout) {
 
     $scope.handle = '';
     $scope.lowercaseHandle = function () {
@@ -20,6 +20,30 @@ myApp.controller('mainController', ['$scope', '$filter', function($scope, $filte
         console.log('変化がありました');
         console.log('新：' + newValue);
         console.log('旧：' + oldValue);
+    
     });
 
+    // // AngularJsはこのSettimeOut内で起きた事をハンドリングしていない。
+    // setTimeout(function() {
+    //     $scope.handle = 'hogehogehoge';
+    //     console.log('スコープが変わりました。');
+    // }, 3000);
+
+    // // Timeoutの解決方法１
+    // setTimeout(function() {
+        
+    //     // Apply関数の中で実行する。
+    //     // -> 普段書く必要は無いが、angularにハンドリングしてほしい為、明示的に記述。
+    //     $scope.$apply(function() {
+    //         $scope.handle = 'hogehogehoge';
+    //         console.log('スコープが変わりました。');
+    //     });
+    // }, 3000);
+    
+    // Timeoutの解決方法2
+    // Timeoutのサービスを使用する。
+    $timeout(function() {
+        $scope.handle = 'hogehogehoge';
+        console.log('スコープが変わりました。');
+    }, 3000);
 }]);
