@@ -51,8 +51,16 @@
                 <!--</div>-->
                 
                 <!-- 条件を満たさない時はDOMを非表示にする -->
-                <div ng-show="handle.length !== 5" class="alert">
-                    ハンドルネームは5文字でなければいけません！
+                <div class="alert" 
+                     ng-class="{ 'alert-warning' : handle.length < characters, 'alert-danger': handle.length > characters }" >
+                    
+                    <div ng-show="handle.length < characters">
+                        5文字より少ないです。
+                    </div>
+                    
+                    <div ng-show="handle.length > characters">
+                        5文字より多いです。
+                    </div>
                 </div>
 
                 <hr />
