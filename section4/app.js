@@ -11,18 +11,9 @@ var myApp = angular.module('myApp', []);
 
 myApp.controller('mainController', ['$scope', '$filter', function($scope, $filter) {
 
-    $scope.handle = '';
-    $scope.lowercaseHandle = function () {
-        return $filter('lowercase')($scope.handle);
+    $scope.alertClick = function() {
+        alert('クリックしました');
     };
     
-    $scope.characters = 5;
-    
-    $scope.rules = [
-        {rulename: '5文字でなければいけません'},
-        {rulename: 'まだ使われていないものでなければいけません'},
-        {rulename: '格好いいハンドルネームにしてください'},
-    ];
-    
-    console.log($scope.rules);
+    $scope.name = "Ken Fujiwara";
 }]);
