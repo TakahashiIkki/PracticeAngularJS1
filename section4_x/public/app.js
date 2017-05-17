@@ -9,7 +9,7 @@
  */
 var myApp = angular.module('myApp', []);
 
-myApp.controller('mainController', ['$scope', '$filter', function($scope, $filter) {
+myApp.controller('mainController', ['$scope', '$filter', '$http', function($scope, $filter, $http) {
 
     $scope.handle = '';
     $scope.lowercaseHandle = function () {
@@ -18,17 +18,12 @@ myApp.controller('mainController', ['$scope', '$filter', function($scope, $filte
     
     $scope.characters = 5;
     
-    var rulesRequest = new XMLHttpRequest();
-    
-    rulesRequest.onreadystatechange = function() {
-        $scope.$apply(function () {
-            if (rulesRequest.readyState == 4 && rulesRequest.status == 200) {
-                $scope.rules = JSON.parse(rulesRequest.responseText);
-            }
+    $http.get('/api')
+        .then(function(result) {
+            $scope.rules = result.data;
+        })
+        .catch(function(err) {
+            console.log(err);
         });
-    };
-    
-    rulesRequest.open('GET', 'http://udemy-angularjs-ja-ikkitang1211.c9users.io:8080/api', true);
-    rulesRequest.send();
     
 }]);

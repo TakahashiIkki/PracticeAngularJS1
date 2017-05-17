@@ -44,11 +44,6 @@
                     <!-- input と $scope.handle が双方向にバインドされる。 -->
                 </div>
 
-                <!-- 条件を満たさない時はDOM毎消す -->
-                <!--<div ng-if="handle.length !== 5" class="alert">-->
-                <!--    ハンドルネームは5文字でなければいけません！-->
-                <!--</div>-->
-                
                 <!-- 条件を満たさない時はDOMを非表示にする -->
                 <div class="alert" 
                      ng-class="{ 'alert-warning' : handle.length < characters, 'alert-danger': handle.length > characters }" >
