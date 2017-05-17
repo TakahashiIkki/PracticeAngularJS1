@@ -18,11 +18,17 @@ myApp.controller('mainController', ['$scope', '$filter', function($scope, $filte
     
     $scope.characters = 5;
     
-    $scope.rules = [
-        {rulename: '5文字でなければいけません'},
-        {rulename: 'まだ使われていないものでなければいけません'},
-        {rulename: '格好いいハンドルネームにしてください'},
-    ];
+    var rulesRequest = new XMLHttpRequest();
     
-    console.log($scope.rules);
+    rulesRequest.onreadystatechange = function() {
+        $scope.$apply(function () {
+            if (rulesRequest.readyState == 4 && rulesRequest.status == 200) {
+                $scope.rules = JSON.parse(rulesRequest.responseText);
+            }
+        });
+    };
+    
+    rulesRequest.open('GET', 'http://udemy-angularjs-ja-ikkitang1211.c9users.io:8080/api', true);
+    rulesRequest.send();
+    
 }]);
