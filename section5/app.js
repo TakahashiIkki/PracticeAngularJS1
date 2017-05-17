@@ -7,15 +7,30 @@
  *  第二引数には、依存するモジュールを定義する。
  *。
  */
-var myApp = angular.module('myApp', []);
+ // ngRouteを追加.
+var myApp = angular.module('myApp', ['ngRoute']);
 
-myApp.controller('mainController', ['$scope', function($scope) {
+myApp.config(function($routeProvider) {
+    
+    $routeProvider
+    .when('/', {
+        templateUrl: 'pages/main.html',
+        controller: 'mainController',
+    })
+    .when('/second', {
+        templateUrl: 'pages/second.html',
+        controller: 'secondController',
+    });
+    
+});
+
+myApp.controller('mainController', ['$scope', '$location', '$log', function($scope, $location, $log) {
 
     $scope.name = 'Main';
     
 }]);
 
-myApp.controller('secondController', ['$scope', function($scope) {
+myApp.controller('secondController', ['$scope', '$location', '$log', function($scope, $location, $log) {
 
     $scope.name = 'Second';
     

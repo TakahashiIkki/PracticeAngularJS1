@@ -17,6 +17,7 @@
 
         <!-- angularをCDNから取得 -->
         <script src="../bootstrap/js/1.5.8.angular.min.js"></script>
+        <script src="../bootstrap/js/1.5.8.angular-route.min.js"></script>
         <script src="app.js"></script>
 
     </head>
@@ -25,28 +26,20 @@
             <nav class="navbar navbar-default">
                 <div class="container">
                     <div class="navbar-header">
-                        <a href="/" class="navbar-brand">AngularJs</a>
+                        <a href="#/" class="navbar-brand">AngularJs</a>
                     </div>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><i class="fa fa-home"></i> ホーム</a>
-                        </li>
+                        <li><a href="#/"><i class="fa fa-home"></i> ホーム</a></li>
+                        <li><a href="#/second"><i class="fa fa-home"></i> Seconde</a></li>
                     </ul>
                 </div>
             </nav>
         </header>
 
         <div class="container">
-            <div ng-controller="mainController">
-                
-                <h1>{{name}}</h1>
-                
-            </div>
-             <div ng-controller="secondController">
-                
-                <h1>{{name}}</h1>
-                
-            </div>
+            <!-- Routingの定義に合えば、必要なDirectiveをロードしてくれる -->
+            <div ng-view></div>
         </div>
     </body>
 </html>
